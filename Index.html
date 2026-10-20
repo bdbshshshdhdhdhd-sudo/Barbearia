@@ -1,0 +1,484 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b0b0b">
+  <meta name="description" content="Imperior Barber — barbearia premium, cortes de precisão e estilo.">
+  <title>Imperior Barber | Seu estilo, sua assinatura</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0b0b0b;
+      --panel: #131313;
+      --gold: #c9a45c;
+      --gold-light: #ead5a0;
+      --white: #f5f1e8;
+      --muted: #a49e93;
+      --line: rgba(201,164,92,.22);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 85px; }
+
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { display: block; width: 100%; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+
+    .container { width: min(1120px, 90%); margin: auto; }
+
+    .topline {
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(11,11,11,.94);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 27px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--gold-light);
+      line-height: 1;
+    }
+
+    .brand small {
+      display: block;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 9px;
+      letter-spacing: 4px;
+      text-align: center;
+      margin-top: 7px;
+      color: var(--muted);
+    }
+
+    .nav-links { display: flex; align-items: center; gap: 26px; }
+    .nav-links a { font-size: 12px; color: #d3cec4; transition: color .25s; }
+    .nav-links a:hover { color: var(--gold-light); }
+
+    .btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 9px;
+      padding: 14px 22px;
+      background: var(--gold);
+      color: #17120a;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .7px;
+      border: 1px solid var(--gold);
+      transition: .25s ease;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(201,164,92,.15);
+    }
+
+    .btn-outline { background: transparent; color: var(--gold-light); }
+    .btn-outline:hover { color: #17120a; }
+
+    .hero {
+      min-height: 660px;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(90deg, rgba(7,7,7,.97) 0%, rgba(7,7,7,.86) 45%, rgba(7,7,7,.25) 100%),
+        url('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1800&q=85') center 42% / cover;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(0deg, var(--bg), transparent 22%, transparent 80%, var(--bg));
+      pointer-events: none;
+    }
+
+    .hero-content { max-width: 650px; padding: 90px 0; position: relative; z-index: 1; }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--gold);
+      text-transform: uppercase;
+      font-size: 10px;
+      letter-spacing: 3px;
+      font-weight: 700;
+      margin-bottom: 22px;
+    }
+
+    .eyebrow::before { content: ""; width: 34px; height: 1px; background: var(--gold); }
+
+    h1, h2, h3 { font-family: 'Cormorant Garamond', serif; font-weight: 500; }
+
+    h1 {
+      font-size: clamp(54px, 8vw, 94px);
+      line-height: .98;
+      letter-spacing: -2px;
+      margin-bottom: 25px;
+    }
+
+    h1 span { color: var(--gold-light); font-style: italic; }
+
+    .hero p { color: #c5c0b6; font-size: 15px; max-width: 440px; margin-bottom: 32px; }
+
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+
+    .hero-note {
+      margin-top: 55px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 25px;
+      color: #c2bbae;
+      font-size: 11px;
+    }
+
+    .hero-note span::before { content: "✦"; color: var(--gold); margin-right: 8px; }
+
+    .section { padding: 100px 0; }
+    .section-alt { background: #101010; border-top: 1px solid rgba(255,255,255,.035); border-bottom: 1px solid rgba(255,255,255,.035); }
+
+    .section-head { text-align: center; max-width: 620px; margin: 0 auto 45px; }
+    .section-head .eyebrow { justify-content: center; }
+    .section-head .eyebrow::after { content: ""; width: 34px; height: 1px; background: var(--gold); }
+
+    h2 { font-size: clamp(38px, 5vw, 57px); line-height: 1.05; margin-bottom: 15px; }
+    h2 span { color: var(--gold-light); }
+    .section-head p { color: var(--muted); font-size: 13px; }
+
+    .services { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+
+    .service {
+      padding: 30px 25px;
+      background: linear-gradient(145deg, #181818, #101010);
+      border: 1px solid var(--line);
+      transition: transform .25s, border-color .25s;
+    }
+
+    .service:hover { transform: translateY(-6px); border-color: var(--gold); }
+
+    .service-number { color: var(--gold); font-size: 11px; letter-spacing: 2px; }
+    .service h3 { font-size: 29px; margin: 22px 0 8px; }
+    .service p { color: var(--muted); font-size: 12px; min-height: 42px; }
+    .service-bottom { display: flex; align-items: end; justify-content: space-between; gap: 10px; margin-top: 28px; padding-top: 18px; border-top: 1px solid var(--line); }
+    .price { color: var(--gold-light); font-size: 24px; font-family: 'Cormorant Garamond', serif; }
+    .duration { color: var(--muted); font-size: 10px; }
+
+    .experience {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 65px;
+    }
+
+    .experience-image { position: relative; padding: 0 18px 18px 0; }
+    .experience-image::after { content: ""; position: absolute; right: 0; bottom: 0; width: 65%; height: 65%; border: 1px solid var(--gold); z-index: 0; }
+    .experience-image img { position: relative; z-index: 1; height: 470px; object-fit: cover; filter: saturate(.75); }
+    .experience-copy .eyebrow { margin-bottom: 18px; }
+    .experience-copy h2 { margin-bottom: 22px; }
+    .experience-copy p { color: var(--muted); font-size: 13px; margin-bottom: 15px; }
+    .features { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 27px 0; }
+    .feature { border-left: 1px solid var(--gold); padding-left: 13px; }
+    .feature strong { display: block; font-size: 12px; font-weight: 600; }
+    .feature span { color: var(--muted); font-size: 10px; }
+
+    .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .gallery-item { position: relative; overflow: hidden; background: var(--panel); }
+    .gallery-item img { height: 320px; object-fit: cover; transition: transform .5s; filter: saturate(.78); }
+    .gallery-item:hover img { transform: scale(1.06); }
+    .gallery-label { position: absolute; left: 0; right: 0; bottom: 0; padding: 35px 17px 15px; background: linear-gradient(transparent, rgba(0,0,0,.9)); color: #fff; font-family: 'Cormorant Garamond', serif; font-size: 22px; }
+
+    .quote {
+      max-width: 760px;
+      margin: auto;
+      text-align: center;
+      padding: 45px 20px;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .quote-mark { font-family: 'Cormorant Garamond', serif; color: var(--gold); font-size: 60px; line-height: 1; }
+    .quote blockquote { font-family: 'Cormorant Garamond', serif; font-size: clamp(25px, 4vw, 38px); line-height: 1.25; margin: 8px 0 20px; }
+    .quote p { color: var(--muted); font-size: 11px; }
+
+    .booking {
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+      padding: 75px 25px;
+      border: 1px solid var(--line);
+      background: radial-gradient(ellipse at top, rgba(201,164,92,.12), transparent 65%), #111;
+    }
+
+    .booking h2 { max-width: 650px; margin: 0 auto 17px; }
+    .booking p { color: var(--muted); font-size: 13px; margin-bottom: 27px; }
+
+    .contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .contact-item { padding: 25px 15px; border: 1px solid var(--line); text-align: center; }
+    .contact-icon { color: var(--gold); font-size: 22px; }
+    .contact-item h3 { font-size: 24px; margin: 10px 0 5px; }
+    .contact-item p { color: var(--muted); font-size: 12px; }
+
+    footer { padding: 35px 0; border-top: 1px solid var(--line); }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 20px; }
+    .footer-inner p { color: var(--muted); font-size: 10px; text-align: right; }
+
+    .reveal { animation: rise .8s both; }
+    @keyframes rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+
+    @media (max-width: 760px) {
+      .nav { min-height: 68px; }
+      .brand { font-size: 23px; }
+      .nav-links { gap: 13px; }
+      .nav-links a { font-size: 10px; }
+      .nav-links .nav-optional { display: none; }
+      .nav .btn { padding: 10px 12px; font-size: 10px; }
+      .hero { min-height: 610px; background-position: 58% center; }
+      .hero-content { padding: 75px 0 55px; }
+      h1 { font-size: clamp(53px, 14vw, 76px); }
+      .hero p { font-size: 13px; }
+      .hero-note { gap: 12px 20px; margin-top: 38px; }
+      .section { padding: 72px 0; }
+      .services { grid-template-columns: 1fr; gap: 12px; }
+      .service { padding: 23px; }
+      .service h3 { margin-top: 13px; }
+      .experience { grid-template-columns: 1fr; gap: 35px; }
+      .experience-image img { height: 350px; }
+      .gallery { grid-template-columns: repeat(2, 1fr); gap: 9px; }
+      .gallery-item img { height: 230px; }
+      .gallery-item:last-child { grid-column: 1 / -1; }
+      .gallery-item:last-child img { height: 260px; }
+      .contact-grid { grid-template-columns: 1fr; gap: 12px; }
+      .contact-item { padding: 20px; }
+      .booking { padding: 55px 18px; }
+      .footer-inner { flex-direction: column; text-align: center; }
+      .footer-inner p { text-align: center; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation: none !important; transition: none !important; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="topline"></div>
+
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#inicio">IMPERIOR<small>BARBER STUDIO</small></a>
+      <nav class="nav-links" aria-label="Menu principal">
+        <a href="#servicos">Serviços</a>
+        <a class="nav-optional" href="#galeria">Galeria</a>
+        <a class="nav-optional" href="#sobre">Experiência</a>
+        <a class="btn" href="#agendar">Agendar ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="container">
+        <div class="hero-content reveal">
+          <div class="eyebrow">Mais que um corte. Uma assinatura.</div>
+          <h1>Seu estilo.<br>Sua <span>presença.</span></h1>
+          <p>Precisão nos detalhes, excelência em cada acabamento e uma experiência feita para quem sabe o valor da própria imagem.</p>
+          <div class="hero-actions">
+            <a class="btn" href="#agendar">Agende seu horário ↗</a>
+            <a class="btn btn-outline" href="#servicos">Conheça os serviços</a>
+          </div>
+          <div class="hero-note">
+            <span>Cortes de precisão</span>
+            <span>Atendimento exclusivo</span>
+            <span>Estilo autêntico</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="servicos">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Nosso trabalho</div>
+          <h2>Excelência em cada <span>detalhe.</span></h2>
+          <p>Serviços pensados para valorizar seu estilo, com técnica, cuidado e acabamento impecável.</p>
+        </div>
+
+        <div class="services">
+          <article class="service">
+            <span class="service-number">01 / ESSENCIAL</span>
+            <h3>Corte masculino</h3>
+            <p>Do clássico ao degradê moderno, com acabamento personalizado.</p>
+            <div class="service-bottom">
+              <span class="price">R$ 45</span>
+              <span class="duration">30–40 min</span>
+            </div>
+          </article>
+          <article class="service">
+            <span class="service-number">02 / PRECISÃO</span>
+            <h3>Barba premium</h3>
+            <p>Modelagem, contorno preciso e cuidado para um visual alinhado.</p>
+            <div class="service-bottom">
+              <span class="price">R$ 30</span>
+              <span class="duration">20–30 min</span>
+            </div>
+          </article>
+          <article class="service">
+            <span class="service-number">03 / EXPERIÊNCIA</span>
+            <h3>Corte + barba</h3>
+            <p>O combo completo para renovar seu visual da melhor forma.</p>
+            <div class="service-bottom">
+              <span class="price">R$ 65</span>
+              <span class="duration">50–60 min</span>
+            </div>
+          </article>
+        </div>
+        <p style="color:var(--muted);font-size:10px;text-align:center;margin-top:20px;">* Valores e duração ilustrativos para este projeto de portfólio.</p>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="sobre">
+      <div class="container experience">
+        <div class="experience-image">
+          <img src="https://images.unsplash.com/photo- barber?auto=format&fit=crop&w=900&q=80" alt="Ambiente sofisticado de barbearia" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=900&q=80'">
+        </div>
+        <div class="experience-copy">
+          <div class="eyebrow">A experiência Imperior</div>
+          <h2>O cuidado está nos <span>detalhes.</span></h2>
+          <p>Acreditamos que a barbearia vai além do espelho. É um espaço para desacelerar, cuidar de si e sair com a confiança renovada.</p>
+          <p>Cada atendimento combina técnica, atenção individual e respeito ao estilo de cada cliente.</p>
+          <div class="features">
+            <div class="feature"><strong>Precisão</strong><span>Acabamento cuidadoso</span></div>
+            <div class="feature"><strong>Personalidade</strong><span>Seu estilo em primeiro lugar</span></div>
+            <div class="feature"><strong>Conforto</strong><span>Ambiente acolhedor</span></div>
+            <div class="feature"><strong>Dedicação</strong><span>Atenção a cada detalhe</span></div>
+          </div>
+          <a class="btn btn-outline" href="#galeria">Veja nosso estilo ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="galeria">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Inspiração</div>
+          <h2>Estilo que fala <span>por si.</span></h2>
+          <p>Uma seleção visual de referências de cortes e cuidados masculinos.</p>
+        </div>
+
+        <div class="gallery">
+          <div class="gallery-item">
+            <img loading="lazy" src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=700&q=80" alt="Referência de corte masculino">
+            <div class="gallery-label">Cortes modernos</div>
+          </div>
+          <div class="gallery-item">
+            <img loading="lazy" src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=700&q=80" alt="Interior de barbearia">
+            <div class="gallery-label">Nossa atmosfera</div>
+          </div>
+          <div class="gallery-item">
+            <img loading="lazy" src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?auto=format&fit=crop&w=700&q=80" alt="Barbeiro trabalhando em um corte">
+            <div class="gallery-label">Precisão no acabamento</div>
+          </div>
+        </div>
+        <p style="color:var(--muted);font-size:10px;text-align:center;margin-top:18px;">Imagens ilustrativas. Substitua por fotos autorizadas do estabelecimento quando usar o site para um cliente real.</p>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container">
+        <div class="quote">
+          <div class="quote-mark">“</div>
+          <blockquote>Elegância não é chamar atenção. É ser lembrado pela impressão que você deixa.</blockquote>
+          <p>O conceito Imperior Barber</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="agendar">
+      <div class="container">
+        <div class="booking">
+          <div class="eyebrow" style="justify-content:center;">Seu próximo visual começa aqui</div>
+          <h2>Reserve seu momento de <span>cuidado.</span></h2>
+          <p>Entre em contato para consultar horários e escolher seu próximo serviço.</p>
+          <!-- Troque o número de demonstração pelo WhatsApp real, com código do país e DDD. -->
+          <a class="btn" href="https://wa.me/5500000000000?text=Ol%C3%A1%21%20Gostaria%20de%20consultar%20hor%C3%A1rios%20na%20Imperior%20Barber." target="_blank" rel="noopener noreferrer">Agendar pelo WhatsApp ↗</a>
+          <p style="margin-top:17px;margin-bottom:0;font-size:10px;">Demonstração de portfólio · configure o contato antes de publicar para clientes.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="contato">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Encontre a gente</div>
+          <h2>Seu lugar de <span>estilo.</span></h2>
+          <p>Informações de exemplo para demonstrar a estrutura do site.</p>
+        </div>
+        <div class="contact-grid">
+          <div class="contact-item">
+            <div class="contact-icon">⌖</div>
+            <h3>Endereço</h3>
+            <p>Adicione o endereço da barbearia</p>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">◷</div>
+            <h3>Horários</h3>
+            <p>Segunda a sábado · configure os horários</p>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">✆</div>
+            <h3>Contato</h3>
+            <p>Adicione o telefone ou WhatsApp</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <a class="brand" href="#inicio">IMPERIOR<small>BARBER STUDIO</small></a>
+      <p>© 2026 Imperior Barber · Projeto demonstrativo de portfólio.</p>
+    </div>
+  </footer>
+</body>
+                                                </html>
+                                                
